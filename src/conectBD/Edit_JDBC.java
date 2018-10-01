@@ -2,6 +2,7 @@ package conectBD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Edit_JDBC {
@@ -12,7 +13,25 @@ public class Edit_JDBC {
 		// updateProduct();
 		// deleteProduct();
 	}
-
+	
+	private static void get_all() {
+		
+		try {
+			// create conection
+			Connection myConnection = DriverManager.getConnection(credentials[0], credentials[1],
+					credentials[2]);			// create object statement
+			Statement myStatement = myConnection.createStatement();
+			// SQL Query - The ResulSet object creates a table on memory
+			ResultSet resultSet = myStatement.executeQuery("SELECT * from productos");			
+			// Iterate the resulset object
+			while (resultSet.next()) {
+				System.out.println(resultSet.getString("nombre")+ " " + resultSet.getString("seccion"));
+			}
+		} catch (Exception e) {
+			System.out.println("Connection Error");
+			System.out.println(e.getMessage());
+		}
+	}
 	private static void insertProduct() {
 		try {
 
