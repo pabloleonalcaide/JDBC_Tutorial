@@ -3,6 +3,7 @@ package conectBD;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Edit_JDBC {
@@ -18,8 +19,7 @@ public class Edit_JDBC {
 		
 		try {
 			// create conection
-			Connection myConnection = DriverManager.getConnection(credentials[0], credentials[1],
-					credentials[2]);			// create object statement
+			Connection myConnection = getConnection();			// create object statement
 			Statement myStatement = myConnection.createStatement();
 			// SQL Query - The ResulSet object creates a table on memory
 			ResultSet resultSet = myStatement.executeQuery("SELECT * from productos");			
@@ -32,12 +32,14 @@ public class Edit_JDBC {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	private static Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(credentials[0], credentials[1],
+				credentials[2]);
+	}
 	private static void insertProduct() {
 		try {
-
-			Connection myConnection = DriverManager.getConnection(credentials[0], credentials[1],
-					credentials[2]);
-
+			Connection myConnection = getConnection();
 			Statement myStatement = myConnection.createStatement();
 			String query = "INSERT INTO productos(seccion, nombre, precio, pais) VALUES ('fontaneria','tuberia', 12, 'Francia')";
 			myStatement.executeUpdate(query);
@@ -50,10 +52,7 @@ public class Edit_JDBC {
 
 	private static void updateProduct() {
 		try {
-
-			Connection myConnection = DriverManager.getConnection(credentials[0], credentials[1],
-					credentials[2]);
-
+			Connection myConnection = getConnection();
 			Statement myStatement = myConnection.createStatement();
 			String query = "UPDATE productos set precio=precio*2 where nombre='tuberia'";
 			myStatement.executeUpdate(query);
@@ -65,10 +64,7 @@ public class Edit_JDBC {
 	}
 	private static void deleteProduct() {
 		try {
-
-			Connection myConnection = DriverManager.getConnection(credentials[0], credentials[1],
-					credentials[2]);
-
+			Connection myConnection = getConnection();
 			Statement myStatement = myConnection.createStatement();
 			String query = "delete from productos where nombre='tuberia'";
 			myStatement.executeUpdate(query);

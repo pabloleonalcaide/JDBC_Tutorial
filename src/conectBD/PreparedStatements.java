@@ -15,8 +15,7 @@ public class PreparedStatements {
 	
 	private static void select(String seccion, String pais) {
 		try {
-			Connection myConnection = DriverManager.getConnection(credentials[0], credentials[1],
-					credentials[2]);
+			Connection myConnection = getConnection();
 			PreparedStatement preparedStatements = myConnection.prepareStatement("SELECT * from productos where seccion=? and pais=?");
 			
 			preparedStatements.setString(1, seccion); // define parameters for the query
@@ -34,5 +33,10 @@ public class PreparedStatements {
 			System.out.println(e.getMessage());
 		}
 
+	}
+
+	private static Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(credentials[0], credentials[1],
+				credentials[2]);
 	}
 }
