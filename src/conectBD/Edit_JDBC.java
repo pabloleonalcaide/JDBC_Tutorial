@@ -5,7 +5,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 
+ * @author pablo
+ *
+ */
 public class Edit_JDBC {
 	protected static String[] credentials = { "jdbc:mysql://localhost:3306/pruebas", "root", "root" };
 
@@ -19,7 +23,8 @@ public class Edit_JDBC {
 		
 		try {
 			// create conection
-			Connection myConnection = getConnection();			// create object statement
+			Connection myConnection = getConnection();			
+			// create object statement
 			Statement myStatement = myConnection.createStatement();
 			// SQL Query - The ResulSet object creates a table on memory
 			ResultSet resultSet = myStatement.executeQuery("SELECT * from productos");			
