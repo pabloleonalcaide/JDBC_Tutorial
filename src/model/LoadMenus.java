@@ -10,9 +10,6 @@ public class LoadMenus {
 		dbConnection = new DBConnection();
 	}
 	
-	/*
-	 * @return product section
-	 */
 	public String executeQuery() {
 		Product product = null;
 		Connection connection = dbConnection.getConnection();
@@ -27,12 +24,10 @@ public class LoadMenus {
 			product = new Product();
 			product.setSeccion(resultSet.getString(1)); //our query only have one column
 			product.setPais(resultSet2.getString(1));
-
 		} catch (SQLException e) {
 			System.out.println("Error on Load Menus");
 			System.out.println(e.getMessage());
 		}
-		
 		return product.getSeccion();
 		
 	}

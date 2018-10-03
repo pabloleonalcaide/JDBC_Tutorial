@@ -2,11 +2,14 @@ package view;
 
 import javax.swing.*;
 
-import controller.Menus_Controller;
-import model.LoadMenus;
-
+import controller.ButtonController;
+import controller.MenusController;
 import java.awt.*;
-
+/**
+ * Main view, a simple frame with two Combobox and a Button
+ * @author pablo
+ *
+ */
 public class FrameApp extends JFrame {
 	private JComboBox secciones;
 
@@ -57,7 +60,9 @@ public class FrameApp extends JFrame {
 		add(botonConsulta, BorderLayout.SOUTH);
 
 		// add window listener to the combobox
-		addWindowListener(new Menus_Controller(this));
+		addWindowListener(new MenusController(this));
+		// add action listener to the button
+		botonConsulta.addActionListener(new ButtonController(this));
 	}
 
 	public JComboBox getPaises() {
@@ -75,5 +80,14 @@ public class FrameApp extends JFrame {
 	public void setSecciones(JComboBox secciones) {
 		this.secciones = secciones;
 	}
+
+	public JTextArea getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(JTextArea resultado) {
+		this.resultado = resultado;
+	}
+
 
 }

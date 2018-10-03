@@ -5,14 +5,14 @@ import java.awt.event.WindowEvent;
 import model.*;
 import view.*;
 
-public class Menus_Controller extends WindowAdapter {
+public class MenusController extends WindowAdapter {
 	
 	LoadMenus loadMenus = new LoadMenus();
 	
 	private FrameApp frame;
 	
 	// Constructor
-	public Menus_Controller(FrameApp frameApp) {
+	public MenusController(FrameApp frameApp) {
 		this.frame = frameApp;
 	}
 	@SuppressWarnings("unchecked")
