@@ -6,7 +6,6 @@ import conectBD.DB_Connection;
 /**
  * An Example of how works on JDBC  with Procedures
  * @author pablo
- *
  */
 public class QueryClients {
 	static DB_Connection db_Connection = new DB_Connection();	
